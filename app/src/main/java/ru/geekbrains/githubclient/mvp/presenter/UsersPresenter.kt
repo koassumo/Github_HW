@@ -1,11 +1,13 @@
 package ru.geekbrains.githubclient.mvp.presenter
 
+import android.util.Log
 import moxy.MvpPresenter
 import ru.geekbrains.githubclient.mvp.model.entity.GithubUser
 import ru.geekbrains.githubclient.mvp.model.entity.GithubUsersRepo
 import ru.geekbrains.githubclient.mvp.presenter.list.IUserListPresenter
 import ru.geekbrains.githubclient.mvp.view.UsersView
 import ru.geekbrains.githubclient.mvp.view.list.UserItemView
+import ru.geekbrains.githubclient.navigation.Screens
 import ru.terrakok.cicerone.Router
 
 class UsersPresenter(val usersRepo: GithubUsersRepo, val router: Router) : MvpPresenter<UsersView>() {
@@ -31,7 +33,8 @@ class UsersPresenter(val usersRepo: GithubUsersRepo, val router: Router) : MvpPr
         loadData()
 
         usersListPresenter.itemClickListener = {itemView ->
-            // TODO:
+            val login =  usersListPresenter.users[itemView.pos].login
+            router.replaceScreen(Screens.LoginScreen(login))
         }
     }
 
