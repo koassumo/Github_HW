@@ -24,7 +24,7 @@ class UsersRVAdapter(val presenter : IUserListPresenter) : RecyclerView.Adapter<
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_user, parent, false))
 
-    override fun getItemCount() = presenter.getCount()
+    override fun getItemCount() = presenter.getCount() //сколько элементов в RecycleView
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.pos = position

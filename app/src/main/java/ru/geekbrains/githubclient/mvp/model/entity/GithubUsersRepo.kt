@@ -12,4 +12,9 @@ class GithubUsersRepo {
     fun getUsers() : List<GithubUser> {
         return repositories
     }
+
+    fun getFirstLogin() : GithubUser {
+        return repositories[1]
+    }
+
 }
